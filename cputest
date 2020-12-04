@@ -1,9 +1,11 @@
 #!/bin/bash
 
-echo preparing time........
-time yes 0123456789 | head -c 1G > /dev/null
-echo cpu test + preparing time........
-time yes 0123456789 | head -c 1G | md5sum > /dev/null
-
-# rm -rf tmpcputest
-# rm -rf tmpcputest.gz
+echo TEST CPU by 5G sting data md5sum
+echo
+echo preparing time:
+time yes 0123456789 | head -c 5G > /dev/null | grep real
+echo
+echo cpu test + preparing time:
+time yes 0123456789 | head -c 5G | md5sum > /dev/null | grep real
+echo ____________________________
+echo

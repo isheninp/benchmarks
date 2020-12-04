@@ -2,19 +2,21 @@
 
 mkdir tmphddtest
 cd tmphddtest
-echo TEST#1 - 100 000 small files
+echo HDD TEST#1 - 100 000 small files
 echo write:
 time for i in {0..100000}; do echo 'testing hdd' > "tmphddtest${i}.txt"; done
 echo
 echo read:
 time for i in {0..100000}; do cat "tmphddtest${i}.txt" > /dev/null; done
-cd ../
+cd ..
 rm -rf tmphddtest
 echo
-echo TEST#2 dd
+echo HDD TEST#2 dd
 echo
 echo write:
 dd bs=16k count=102400 oflag=direct if=/dev/zero of=test_data
 echo
 echo read:
 dd bs=16K count=102400 iflag=direct if=test_data of=/dev/null
+echo ____________________________
+echo

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo Stating ram test. Root access please
+echo RAM test. Root access please
 echo
 mkdir ramtest
 mount -t tmpfs -o size=1G tmpfs ramtest
@@ -12,3 +12,5 @@ echo read:
 dd if=data_tmp of=/dev/null bs=1M count=512
 umount -f ramtest
 rm -rf ramtest
+echo ____________________________
+echo
