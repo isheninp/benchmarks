@@ -2,4 +2,4 @@
 
 echo Benchmark
 echo
-bash cputest && bash hddtest && bash memtest 
+bash cpu && bash hdd && ram
