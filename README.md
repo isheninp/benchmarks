@@ -4,7 +4,8 @@
 Usage:
 ```
 cd some_hdd_folder
-git clone https://github.com/isheninp/benchmarks.git
+git clone https://github.com/isheninp/benchmarks.git benchmark
+cd benchmark
 bash all
 ```
 
