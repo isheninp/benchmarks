@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo preparing time........
+time yes 0123456789 | head -c 1G > /dev/null
+echo cpu test + preparing time........
+time yes 0123456789 | head -c 1G | md5sum > /dev/null
+
+# rm -rf tmpcputest
+# rm -rf tmpcputest.gz
