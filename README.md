@@ -8,7 +8,15 @@ git clone https://github.com/isheninp/benchmarks.git
 bash all
 ```
 
-Be sure tmpfs ramdisk is unmounted. If not run:
+or separately
+```
+bash cpu
+bash hdd
+bash ram
+```
+
+Be sure tmpfs ramdisk is unmounted after run mem test. 
+If something was wrong just run:
 ```
 umount -f ramtest
 rm -rf ramtest
