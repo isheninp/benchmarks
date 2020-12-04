@@ -1,5 +1,5 @@
 # Simple bash benchmarks
-## HDD CPU RAM ALL
+## HDD CPU RAM
 
 Usage:
 ```
