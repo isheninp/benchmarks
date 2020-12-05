@@ -1,22 +1,14 @@
 #!/bin/bash
-
+TIMEFORMAT=%R
 mkdir tmphddtest
 cd tmphddtest
-echo HDD TEST#1 - 100 000 small files
-echo write:
+echo -ne 'HDD write 100000 files: '
 time for i in {0..100000}; do echo 'testing hdd' > "tmphddtest${i}.txt"; done
-echo
-echo read:
+echo -ne 'HDD read 100000 files: '
 time for i in {0..100000}; do cat "tmphddtest${i}.txt" > /dev/null; done
 cd ..
 rm -rf tmphddtest
-echo
-echo HDD TEST#2 dd
-echo
-echo write:
-dd bs=16k count=102400 oflag=direct if=/dev/zero of=test_data
-echo
-echo read:
-dd bs=16K count=102400 iflag=direct if=test_data of=/dev/null
-echo ____________________________
-echo
+echo -ne 'HDD write by dd: '
+dd bs=16k count=102400 oflag=direct if=/dev/zero of=test_data |& awk '/copied/ {print $8 " "  $9}'
+echo -ne 'HDD read by dd: '
+dd bs=16K count=102400 iflag=direct if=test_data of=/dev/null |& awk '/copied/ {print $8 " "  $9}'

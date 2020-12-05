@@ -1,16 +1,11 @@
 #!/bin/bash
-
-echo RAM test. Root access please
-echo
+TIMEFORMAT=%R
 mkdir ramtest
 mount -t tmpfs -o size=1G tmpfs ramtest
 cd ramtest
-echo write:
-dd if=/dev/zero of=data_tmp bs=1M count=512
-echo
-echo read:
-dd if=data_tmp of=/dev/null bs=1M count=512
+echo -ne 'RAM write: '
+dd if=/dev/zero of=data_tmp bs=1M count=512 |& awk '/copied/ {print $8 " "  $9}'
+echo -ne 'RAM read: '
+dd if=data_tmp of=/dev/null bs=1M count=512 |& awk '/copied/ {print $8 " "  $9}'
 umount -f ramtest
 rm -rf ramtest
-echo ____________________________
-echo

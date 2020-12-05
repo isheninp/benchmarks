@@ -16,11 +16,13 @@ bash hdd
 bash ram
 ```
 
+Warning!
+RAM test creates ram disk, root access!
+
 Be sure tmpfs ramdisk is unmounted after run mem test. 
 If something was wrong just run:
 ```
-umount -f ramtest
-rm -rf ramtest
+umount -f ramtest && rm -rf ramtest
 ```
 
 (c) Pavel Ishenin 2020
