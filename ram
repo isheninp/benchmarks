@@ -4,8 +4,8 @@ mkdir ramtest
 mount -t tmpfs -o size=1G tmpfs ramtest
 cd ramtest
 echo -ne 'RAM write: '
-dd if=/dev/zero of=data_tmp bs=1M count=512 |& awk '/copied/ {print $8 " "  $9}'
+dd if=/dev/zero of=ramtest bs=1M count=512 |& awk '/copied/ {print $8 " "  $9}'
 echo -ne 'RAM read: '
-dd if=data_tmp of=/dev/null bs=1M count=512 |& awk '/copied/ {print $8 " "  $9}'
+dd if=ramtest of=/dev/null bs=1M count=512 |& awk '/copied/ {print $8 " "  $9}'
 umount -f ramtest
 rm -rf ramtest
