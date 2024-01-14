@@ -4,14 +4,31 @@ TIMEFORMAT=%R
 calc() { awk "BEGIN{ printf \"%.2f\", $* }"; }
 
 echo -ne 'HDD write 1 Gbyte random file: '
+sudo sh -c 'echo 1 >/proc/sys/vm/drop_caches'
 btime=`(time head -c 1G /dev/urandom > sample.txt) 2>&1`
 calc 8*1024/$btime
 echo MB/sec
 
-echo -ne 'HDD read 1 Gbyte file into variable: '
-btime=`(time var=$(<sample.txt)) 2>&1`
-calc 8*1024/$btime
-echo MB/sec
+echo 
+
+#echo -ne 'HDD read 1 Gbyte file: '
+#sudo sh -c 'echo 1 >/proc/sys/vm/drop_caches'
+#btime=`(time cat sample.txt > /dev/null ) 2>&1`
+#echo  $btime
+#calc 8*1024/$btime
+#echo MB/sec
+
+sleep 4
+
+echo -ne 'HD write 1Gbyte by dd: '
+dd bs=1G count=1 oflag=direct if=/dev/zero of=sample_dd.txt
+rm -rf sample_dd.txt
+echo 
+
+echo -ne 'HDD read 1 Gbyte by dd: '
+dd bs=1G count=1 iflag=direct if=sample.txt of=/dev/null
+dd bs=1G count=1 iflag=direct if=sample.txt of=/dev/null
+dd bs=1G count=1 iflag=direct if=sample.txt of=/dev/null
 
 rm -rf sample.txt
 
