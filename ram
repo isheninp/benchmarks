@@ -9,3 +9,4 @@ echo -ne 'RAM read: '
 dd if=ramtest of=/dev/null bs=1M count=512 |& awk '/copied/ {print $8 " "  $9}'
 umount -f ramtest
 rm -rf ramtest
+echo

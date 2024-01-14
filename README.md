@@ -4,13 +4,18 @@
 Usage:
 ```
 cd some_hdd_folder
-git clone https://github.com/isheninp/benchmarks.git benchmarks && cd benchmarks && bash all
+git clone https://github.com/isheninp/benchmarks.git benchmarks && cd benchmarks
+```
+run all
+```
+bash all
 ```
 
-or separately
+run separately
 ```
 bash cpu
 bash hdd
+bash hdd_simple
 bash ram
 ```
 

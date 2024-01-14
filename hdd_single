@@ -1,0 +1,18 @@
+#!/bin/bash
+TIMEFORMAT=%R
+
+calc() { awk "BEGIN{ printf \"%.2f\", $* }"; }
+
+echo -ne 'HDD write 1 Gbyte random file: '
+btime=`(time head -c 1G /dev/urandom > sample.txt) 2>&1`
+calc 8*1024/$btime
+echo MB/sec
+
+echo -ne 'HDD read 1 Gbyte file into variable: '
+btime=`(time var=$(<sample.txt)) 2>&1`
+calc 8*1024/$btime
+echo MB/sec
+
+rm -rf sample.txt
+
+echo

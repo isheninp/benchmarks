@@ -1,6 +1,6 @@
 #!/bin/bash
 TIMEFORMAT=%R
-echo "CPU: "
+echo "CPU sec / md5sum: "
  
 cpu_count=$(grep -c ^processor /proc/cpuinfo)
 
@@ -10,3 +10,5 @@ do
 done
 
 wait
+
+echo

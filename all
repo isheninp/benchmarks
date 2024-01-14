@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
 echo
-echo CPU HDD RAM benchmark
+echo CPU HDD benchmark
 echo
-bash cpu && bash hdd && bash ram
+bash ram && bash cpu && bash hdd && bash hdd_single

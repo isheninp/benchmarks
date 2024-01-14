@@ -13,3 +13,5 @@ dd bs=16k count=102400 oflag=direct if=/dev/zero of=test_data |& awk '/copied/ {
 echo -ne 'HDD read by dd: '
 dd bs=16K count=102400 iflag=direct if=test_data of=/dev/null |& awk '/copied/ {print $8 " "  $9}'
 rm -rf test_data
+
+echo
